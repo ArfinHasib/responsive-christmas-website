@@ -28,10 +28,10 @@ const linkAction = () => {
 navLink.forEach((n) => n.addEventListener('click', linkAction));
 
 /*=============== DAY COUNTER FOR CHRISTMAS ===============*/
-const titleData = document.querySelector('.title-data'),
-   numberData = document.querySelector('.number-data'),
-   textData = document.querySelector('.text-data'),
-   msgChristmas = document.querySelector('.msg-christmas');
+const titleData = document.getElementById('title-data'),
+   numberData = document.getElementById('number-data'),
+   textData = document.getElementById('text-data'),
+   msgChristmas = document.getElementById('msg-christmas');
 
 const christmasCountdown = () => {
    let now = new Date(),
@@ -46,7 +46,7 @@ const christmasCountdown = () => {
 
    let nextChirstmasDate = `Dec 25, ${nextChirstmasYear} 00:00:00`,
       chirstmasDay = new Date(nextChirstmasDate),
-      timeDiff = chirstmasDay - now;
+      timeLeft = chirstmasDay - now;
 
    let days = 0,
       hours = 0,
@@ -55,10 +55,10 @@ const christmasCountdown = () => {
 
    // Don't calculate the time left if it is Christmas day
    if (currentMonth != 12 || (currentMonth == 12 && currentDay != 25)) {
-      days = Math.floor(timeDiff / 1000 / 60 / 60 / 24);
-      hours = Math.floor(timeDiff / 1000 / 60 / 60) % 24;
-      minutes = Math.floor(timeDiff / 1000 / 60) % 60;
-      seconds = Math.floor(timeDiff / 1000) % 60;
+      days = Math.floor(timeLeft / 1000 / 60 / 60 / 24);
+      hours = Math.floor(timeLeft / 1000 / 60 / 60) % 24;
+      minutes = Math.floor(timeLeft / 1000 / 60) % 60;
+      seconds = Math.floor(timeLeft / 1000) % 60;
    }
 
    // Show missing days
@@ -67,7 +67,7 @@ const christmasCountdown = () => {
 
    // Show missing hours
    if (currentDay == 24) {
-      numberData.innerHTML = hourse < 10 ? `0${hourse}` : hourse;
+      numberData.innerHTML = hours < 10 ? `0${hours}` : hours;
       textData.innerHTML = 'Hours';
    }
 
